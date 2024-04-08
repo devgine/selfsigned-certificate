@@ -50,6 +50,7 @@ jobs:
           push: true
           provenance: false
           sbom: false
+          platforms: linux/amd64,linux/arm64
           tags: |
             ghcr.io/devgine/selfsigned-certificate:${{ matrix.version }}
             ${{ matrix.latest && 'ghcr.io/devgine/selfsigned-certificate:latest' || ''}}
