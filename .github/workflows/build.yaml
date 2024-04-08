@@ -51,7 +51,7 @@ jobs:
           provenance: false
           sbom: false
           tags: |
-            ghcr.io/devgine/selfsigned-certificate:v${{ matrix.version }}
+            ghcr.io/devgine/selfsigned-certificate:${{ matrix.version }}
             ${{ matrix.latest && 'ghcr.io/devgine/selfsigned-certificate:latest' || ''}}
           context: .
           file: ./Dockerfile
@@ -59,7 +59,7 @@ jobs:
             VCS_REF=${{ github.sha }}
             BUILD_DATE=${{ env.build_date }}
             BUILD_VERSION=v${{ matrix.version }}
-            IMAGE_TAG=ghcr.io/devgine/selfsigned-certificate:v${{ matrix.version }}
+            IMAGE_TAG=ghcr.io/devgine/selfsigned-certificate:${{ matrix.version }}
 
   generation:
     strategy:
@@ -70,7 +70,7 @@ jobs:
     runs-on: ubuntu-latest
     name: "[Generate] Self-signed certificate (${{ matrix.version }})"
     container:
-      image: ghcr.io/devgine/selfsigned-certificate:v${{ matrix.version }}
+      image: ghcr.io/devgine/selfsigned-certificate:${{ matrix.version }}
     steps:
       - name: Print software version
         run: docker-certs -V
@@ -80,3 +80,5 @@ jobs:
 
       - name: Generate self-signed certificate
         run: docker-certs -d www.prod.com -d "*.dev.web"
+
+# todo: check certificates exists
