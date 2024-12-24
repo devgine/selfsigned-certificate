@@ -86,4 +86,4 @@ jobs:
         run: openssl x509 -in /certs/www.gha.test/cert.pem -text -noout
 
       - name: Checking for wildcard certificate
-        run: openssl x509 -in /certs/_gha.web/cert.pem -text -noout
+        run: openssl x509 -in /certs/_.gha.web/cert.pem -text -noout
