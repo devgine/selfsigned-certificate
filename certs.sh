@@ -44,7 +44,7 @@ Cert()
       echo ":: Generating Certificates for the following domain: $domain ::"
       mkdir -p "${GENERATION_DIRNAME}"
       cd "${CERTS_DIR}"
-      minica --ca-cert minica.pem --ca-key=minica-key.pem --domains="$domain"
+      minica --ca-cert "$CERTS_DIR/minica.pem" --ca-key="$CERTS_DIR/minica-key.pem" --domains="$domain"
 
       cat "${GENERATION_DIRNAME}/key.pem" "${GENERATION_DIRNAME}/cert.pem" > "${GENERATION_DIRNAME}/ck.pem"
 
@@ -67,3 +67,5 @@ while getopts ":hVd:" option; do
       echo "Error: Invalid option"
   esac
 done
+
+# todo: add ip address option -i

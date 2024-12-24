@@ -20,7 +20,6 @@ WORKDIR /certs
 
 ENTRYPOINT ["docker-certs"]
 
-
 ## LABELS
 ARG VCS_REF
 ARG BUILD_VERSION
@@ -29,7 +28,7 @@ ARG IMAGE_TAG=ghcr.io/devgine/composer-php:latest
 
 LABEL maintainer="yosribahri@gmail.com"
 LABEL org.opencontainers.image.title="Self-signed certificate docker image"
-LABEL org.opencontainers.image.description="This is a docker image that generate a TLS self signed certificate based on mimica library."
+LABEL org.opencontainers.image.description="A docker image that generate a TLS self signed certificates based on minica library."
 LABEL org.opencontainers.image.source="https://github.com/devgine/selfsigned-certificate"
 LABEL org.opencontainers.image.licenses=MIT
 LABEL org.opencontainers.image.created=$BUILD_DATE
@@ -40,10 +39,12 @@ LABEL org.opencontainers.image.vendor="devgine"
 LABEL org.label-schema.schema-version="1.0"
 LABEL org.label-schema.build-date=$BUILD_DATE
 LABEL org.label-schema.name="devgine/selfsigned-certificate"
-LABEL org.label-schema.description="This is a docker image that generate a TLS self signed certificate based on mimica library."
+LABEL org.label-schema.description="A docker image that generate a TLS self signed certificates based on minica library."
 LABEL org.label-schema.url="https://github.com/devgine/selfsigned-certificate"
 LABEL org.label-schema.vcs-url="https://github.com/devgine/selfsigned-certificate"
 LABEL org.label-schema.vcs-ref=$VCS_REF
 LABEL org.label-schema.version=$BUILD_VERSION
 LABEL org.label-schema.docker.cmd="docker run --rm -v /certs:/certs $IMAGE_TAG -d WWW.DOMAIN.COM"
 LABEL org.label-schema.vendor="devgine"
+
+# todo: add env var to store the Root keypair algorithm (RSA or ECDSA)

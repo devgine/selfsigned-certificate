@@ -80,6 +80,10 @@ jobs:
         run: docker-certs -h
 
       - name: Generate self-signed certificate
-        run: docker-certs -d www.prod.com -d "*.dev.web"
+        run: docker-certs -d www.gha.test -d "*.gha.web"
 
-# todo: check certificates exists
+      - name: Checking for domain certificate
+        run: openssl x509 -in /certs/www.gha.test/cert.pem -text -noout
+
+      - name: Checking for wildcard certificate
+        run: openssl x509 -in /certs/_gha.web/cert.pem -text -noout
